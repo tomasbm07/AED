@@ -4,45 +4,67 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class baseShellSort {
-    List<Integer> array;
+class ShellSort {
+    ArrayList<Integer> array;
 
-    public baseShellSort() {}
+    public ShellSort() {}
 
-    private void generateArray(int size){
-        Random r = new Random();
-        this.array = new ArrayList<>();
-        for (int i = 0; i < size; i++){
-            this.array.add(r.nextInt(10000));
-        }
+    public ShellSort(ArrayList<Integer> array) {
+        this.array = array;
     }
 
-    public long sort(int size) {
-        long final_time;
+    public void setArray(ArrayList<Integer> array) {
+        this.array = array;
+    }
+
+    private void shellSort(List<Integer> gaps){
         int temp;
         int i, j;
 
-        generateArray(size);
+        for (int gap : gaps) {
+            for (i = gap; i < this.array.size(); i++) {
+                temp = this.array.get(i);
+                for (j = i; j >= gap && this.array.get(j - gap) > temp; j -= gap) {
+                    this.array.set(j, this.array.get(j - gap));
+                }
+                this.array.set(j, temp);
+            }
+        }
+    }
 
-        long start_time = System.nanoTime();
+    public long base_sort() {
+        long final_time;
 
+        //create gaps
         List<Integer> gaps = new ArrayList<>();
-        for (i = 0; i < 10; i++){
+        for (int i = 0; i < 15; i++) {
             gaps.add((int) Math.pow(2, i));
         }
 
-        for (int gap : gaps) {
-            for (i = gap; i < array.size(); i++) {
-                temp = array.get(i);
-                for (j = i; j >= gap && array.get(j - gap) > temp; j -= gap) {
-                    array.set(j, array.get(j - gap));
-                }
-                array.set(j, temp);
-            }
-        }
+        long start_time = System.nanoTime();
+
+        //shell sort algorithm
+        shellSort(gaps);
 
         final_time = System.nanoTime() - start_time;
-        return final_time / 1000000*1000; //ms*1000 = s
+        return final_time / 1000000; //ms
+    }
+
+    public long improved_sort_1() {
+        long final_time;
+
+        //create gaps
+        List<Integer> gaps = new ArrayList<>();
+        for (int i = this.array.size()/2; i > 0; i /= 2) {
+            gaps.add(i);
+        }
+
+        long start_time = System.nanoTime();
+
+        shellSort(gaps);
+
+        final_time = System.nanoTime() - start_time;
+        return final_time / 1000000; //ms
     }
 
 }
