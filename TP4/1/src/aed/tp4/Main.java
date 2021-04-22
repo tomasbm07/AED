@@ -20,16 +20,16 @@ public class Main {
         float tempo;
 
         for (int i = (int) (SIZE * 0.05); i <= SIZE; i += (int) (SIZE * 0.05)) {
-            SS.setArray(generator.random(i));
+            //SS.setArray(generator.random(i));
             //SS.setArray(generator.decrescente(i));
-            //SS.setArray(generator.ordenado5Random(i));
             //SS.setArray(generator.ordenado1Random(i));
+            SS.setArray(generator.ordenado5Random(i));
 
-            tempo = SS.base_sort();
+            //tempo = SS.base_sort();
             //tempo = SS.improved_sort_1();
             //tempo = SS.improved_sort_2();
             //tempo = SS.improved_sort_3();
-            //tempo = SS.improved_sort_4();
+            tempo = SS.improved_sort_4();
 
             tempo = tempo / 1000;
             N.add(i);
@@ -88,7 +88,7 @@ class generateInput {
         }
 
         for (int i = 0; i < (int) (size * 0.05); i++) {
-            array.set(this.array.size(), this.max_int);
+            array.set(rand.nextInt(this.array.size()), this.max_int);
         }
 
         return array;
@@ -102,7 +102,7 @@ class generateInput {
         }
 
         for (int i = 0; i < (int) (size * 0.01); i++) {
-            array.set(this.array.size(), this.max_int);
+            array.set(rand.nextInt(this.array.size()), this.max_int);
         }
 
         return array;

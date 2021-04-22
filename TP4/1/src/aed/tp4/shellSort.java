@@ -8,12 +8,8 @@ import java.util.Random;
 class ShellSort {
     ArrayList<Integer> array;
 
-    public ShellSort() {
-    }
+    public ShellSort() {}
 
-    public ShellSort(ArrayList<Integer> array) {
-        this.array = array;
-    }
 
     public void setArray(ArrayList<Integer> array) {
         this.array = array;
@@ -42,7 +38,7 @@ class ShellSort {
         for (int i = (int) (Math.log(this.array.size()) / Math.log(2)); i >= 0; i--) {
             gaps.add((int) Math.pow(2, i));
         }
-        //System.out.println(gaps);
+        System.out.println(gaps);
         long start_time = System.nanoTime();
 
         //shell sort algorithm
@@ -58,7 +54,7 @@ class ShellSort {
 
         //create gaps
         List<Integer> gaps = new ArrayList<>();
-        for (int i = (int) (this.array.size() / 2.2); i > 0; i /= 2) {
+        for (int i = (int) (this.array.size() / 2); i > 0; i /= 2) {
             gaps.add(i);
         }
 
