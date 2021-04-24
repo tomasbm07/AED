@@ -81,7 +81,7 @@ class generateInput {
         }
 
         for (int i = 0; i < (int) (size * 0.05); i++) {
-            array.add(rand.nextInt(this.max_int));
+            array.set(rand.nextInt(size), rand.nextInt(this.max_int));
         }
 
         return array;
@@ -95,7 +95,7 @@ class generateInput {
         }
 
         for (int i = 0; i < (int) (size * 0.01); i++) {
-            array.add(rand.nextInt(this.max_int));
+            array.set(rand.nextInt(size), rand.nextInt(this.max_int));
         }
 
         return array;
