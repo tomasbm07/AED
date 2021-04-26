@@ -16,16 +16,15 @@ public class Main {
         quickSort QS = new quickSort();
         generateInput generator = new generateInput();
 
-        QS.setArray(new int[]{5,9,4,6,5,3});
-        QS.sort();
+        //QS.setArray(new int[]{5,9,4,6,5,3});
+        //QS.sort();
 
         /*
         insertionSort IS = new insertionSort();
         IS.setArray(generator.decrescente(10));
         IS.sort();
         */
-
-        /*int num_reps = 5; // numero de vezes de execução para cada i -> calcular media
+        int num_reps = 5; // numero de vezes de execução para cada i -> calcular media
         for (int i = (int) (SIZE * 0.05); i <= SIZE; i += (int) (SIZE * 0.05)) {
             tempos_aux = new ArrayList<>();
             for (int x = 0; x < num_reps; x++) {
@@ -42,7 +41,7 @@ public class Main {
             System.out.format("N = %d, T = %.1f ms\n", i, tempo);
         }
 
-        writeFile(N, tempos);*/
+        writeFile(N, tempos);
 
     }
 
@@ -51,7 +50,7 @@ public class Main {
         for (float f : tempos) {
             sum += f;
         }
-        return (sum / reps);
+        return (float) ((double) sum / (double) reps);
     }
 
     public static void writeFile(List<Integer> N, List<Float> tempos){

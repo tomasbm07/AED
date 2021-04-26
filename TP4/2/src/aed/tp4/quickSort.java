@@ -3,8 +3,10 @@ package aed.tp4;
 
 class quickSort {
     int[] array;
+    insertionSort IS;
 
     public quickSort() {
+        IS = new insertionSort();
     }
 
     public void setArray(int[] array) {
@@ -20,19 +22,24 @@ class quickSort {
     }
 
     private void recursiveQuickSort(int[] array, int startIndex, int endIndex) {
-        int index = partition(array, startIndex, endIndex);
+        if (startIndex + 20 > endIndex) {
+            IS.sort(array, startIndex, endIndex);
+            //System.out.println("Doing Insertion Sort!");
+        } else {
+            int index = partition(array, startIndex, endIndex);
 
-        if (startIndex < index - 1) {
-            recursiveQuickSort(array, startIndex, index - 1);
+            if (startIndex < index - 1) {
+                recursiveQuickSort(array, startIndex, index - 1);
+            }
+
+            if (endIndex > index) {
+                recursiveQuickSort(array, index, endIndex);
+            }
         }
 
-        if (endIndex > index) {
-            recursiveQuickSort(array, index, endIndex);
-        }
     }
 
     private int partition(int[] array, int left, int right) {
-        //int pivot = array[left]; // considerar o 1º elemento como pivot
         int pivot = array[left + (right - left) / 2]; //conseiderar um elemento do meio do array como pivot
 
         while (left <= right) {
