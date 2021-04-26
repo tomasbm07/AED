@@ -3,7 +3,8 @@ package aed.tp4;
 class insertionSort {
     int[] array;
 
-    public insertionSort() {}
+    public insertionSort() {
+    }
 
     public void sort(int[] array, int start, int end) {
         int pointer, j;

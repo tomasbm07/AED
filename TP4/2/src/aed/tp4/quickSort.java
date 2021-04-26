@@ -4,6 +4,8 @@ package aed.tp4;
 class quickSort {
     int[] array;
     insertionSort IS;
+    //boolean doInsertionSort = false;
+    boolean doInsertionSort = true;
 
     public quickSort() {
         IS = new insertionSort();
@@ -22,7 +24,7 @@ class quickSort {
     }
 
     private void recursiveQuickSort(int[] array, int startIndex, int endIndex) {
-        if (startIndex + 20 > endIndex) {
+        if (startIndex + 200 > endIndex && doInsertionSort) {
             IS.sort(array, startIndex, endIndex);
             //System.out.println("Doing Insertion Sort!");
         } else {

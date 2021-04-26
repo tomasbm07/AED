@@ -23,8 +23,8 @@ class generateInput {
     //Array sorted descending
     public int[] decrescente(int size) {
         array = new int[size];
-        for (int i = 0; i< size; i++) {
-            array[i] = size-i;
+        for (int i = 0; i < size; i++) {
+            array[i] = size - i;
         }
         return array;
     }
@@ -37,7 +37,7 @@ class generateInput {
         }
 
         for (int i = 0; i < (int) (size * 0.05); i++) {
-            array[rand.nextInt(size)]= rand.nextInt(this.max_int);
+            array[rand.nextInt(size)] = rand.nextInt(this.max_int);
         }
 
         return array;
@@ -51,7 +51,7 @@ class generateInput {
         }
 
         for (int i = 0; i < (int) (size * 0.01); i++) {
-            array[rand.nextInt(size)]= rand.nextInt(this.max_int);
+            array[rand.nextInt(size)] = rand.nextInt(this.max_int);
         }
 
         return array;

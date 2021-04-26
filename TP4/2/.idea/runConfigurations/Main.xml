@@ -2,6 +2,7 @@
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="aed.tp4.Main" />
     <module name="2" />
+    <option name="VM_PARAMETERS" value="-Xmx8G" />
     <extension name="net.ashald.envfile">
       <option name="IS_ENABLED" value="false" />
       <option name="IS_SUBST" value="false" />
