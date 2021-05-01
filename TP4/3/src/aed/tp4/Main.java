@@ -13,27 +13,19 @@ public class Main {
         List<Float> tempos = new ArrayList<>();
         List<Float> tempos_aux;
 
-        quickSort QS = new quickSort();
+        radixSort RS = new radixSort();
         generateInput generator = new generateInput();
 
-        //QS.setArray(new int[]{5,9,4,6,5,3});
-        //QS.sort();
-
-        /*
-        insertionSort IS = new insertionSort();
-        IS.setArray(generator.decrescente(10));
-        IS.sort();
-        */
         int num_reps = 5; // numero de vezes de execução para cada i -> calcular media
         for (int i = (int) (SIZE * 0.05); i <= SIZE; i += (int) (SIZE * 0.05)) {
             tempos_aux = new ArrayList<>();
             for (int x = 0; x < num_reps; x++) {
-                //QS.setArray(generator.random(i));
-                //QS.setArray(generator.decrescente(i));
-                QS.setArray(generator.ordenado1Random(i));
-                //QS.setArray(generator.ordenado5Random(i));
+                //RS.setArray(generator.random(i));
+                RS.setArray(generator.decrescente(i));
+                //RS.setArray(generator.ordenado1Random(i));
+                //RS.setArray(generator.ordenado5Random(i));
 
-                tempos_aux.add(QS.sort());
+                tempos_aux.add(RS.sort());
             }
             N.add(i);
             float tempo = media(tempos_aux, num_reps);
