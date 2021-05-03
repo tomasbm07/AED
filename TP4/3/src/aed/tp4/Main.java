@@ -14,6 +14,7 @@ public class Main {
         List<Float> tempos_aux;
 
         radixSort RS = new radixSort();
+        radixSortBase2 RS2 = new radixSortBase2();
         generateInput generator = new generateInput();
 
         int num_reps = 5; // numero de vezes de execução para cada i -> calcular media
@@ -21,11 +22,13 @@ public class Main {
             tempos_aux = new ArrayList<>();
             for (int x = 0; x < num_reps; x++) {
                 //RS.setArray(generator.random(i));
-                RS.setArray(generator.decrescente(i));
+                RS2.setArray(generator.random(i));
+                //RS.setArray(generator.decrescente(i));
                 //RS.setArray(generator.ordenado1Random(i));
                 //RS.setArray(generator.ordenado5Random(i));
 
-                tempos_aux.add(RS.sort());
+                //tempos_aux.add(RS.sort());
+                tempos_aux.add(RS2.sort());
             }
             N.add(i);
             float tempo = media(tempos_aux, num_reps);
