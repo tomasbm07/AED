@@ -5,6 +5,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*--------------------------------------------------
+* Code referenced from:
+* https://www.journaldev.com/42955/radix-sort-algorithm
+---------------------------------------------------*/
+
+
 public class Main {
     private static final int SIZE = 10000000;
 
@@ -14,7 +20,6 @@ public class Main {
         List<Float> tempos_aux;
 
         radixSort RS = new radixSort();
-        radixSortBase2 RS2 = new radixSortBase2();
         generateInput generator = new generateInput();
 
         int num_reps = 5; // numero de vezes de execução para cada i -> calcular media
@@ -22,18 +27,17 @@ public class Main {
             tempos_aux = new ArrayList<>();
             for (int x = 0; x < num_reps; x++) {
                 //RS.setArray(generator.random(i));
-                RS2.setArray(generator.random(i));
-                //RS.setArray(generator.decrescente(i));
+                RS.setArray(generator.decrescente(i));
                 //RS.setArray(generator.ordenado1Random(i));
                 //RS.setArray(generator.ordenado5Random(i));
 
-                //tempos_aux.add(RS.sort());
-                tempos_aux.add(RS2.sort());
+                tempos_aux.add(RS.sort());
             }
             N.add(i);
             float tempo = media(tempos_aux, num_reps);
             tempos.add(tempo);
             System.out.format("N = %d, T = %.1f ms\n", i, tempo);
+            //System.out.format("%d;%.1f\n", i, tempo);
         }
 
         writeFile(N, tempos);

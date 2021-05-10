@@ -51,7 +51,6 @@ class radixSort{
 
 }
 
-
 class countingSort {
 
     public countingSort(){}
@@ -82,86 +81,11 @@ class countingSort {
             count[(array[i] / place) % 10]--;
         }
 
-        for (int i = 0; i < size; i++)
+        //copy array
+        for (int i = 0; i < size; i++){
             array[i] = output[i];
-
-    }
-
-}
-
-
-class radixSortBase2 {
-    int[] array;
-
-    public radixSortBase2(){}
-
-    public void setArray(int[] array) {
-        this.array = array;
-    }
-
-    private int getBitValue(int number, int bit){
-        int mask = 1 << bit;
-        if ((number & mask) != 0 )
-            return 1;
-
-        return  0;
-    }
-
-    private int[] countingSort(int[] array, int bit){
-        int[] count = new int[]{0,0};
-        int[] sortedArray = new int[array.length];
-        int itemBitValue;
-
-        for (int i : array) {
-            count[getBitValue(i, bit)] += 1;
         }
 
-        int[] index = new int[]{0, count[0]};
-
-        for (int i : array) {
-            itemBitValue = getBitValue(i, bit);
-            sortedArray[index[itemBitValue]] = i;
-            index[itemBitValue] += 1;
-        }
-        return sortedArray;
-    }
-
-    private void aux_sort(int num_bits){
-        for (int i = 0; i < num_bits; i++) {
-            this.array = countingSort(this.array, i);
-        }
-    }
-
-    public float sort(){
-        long start = System.nanoTime();
-        aux_sort(countBits(getMaxNum()));
-        long end = System.nanoTime();
-        checkSort(); // make sure array is sorted
-        return (float) ((end - start) / 1000000); // ms
-    }
-
-    private int getMaxNum(){
-        int max = this.array[0];
-        for (int i = 1; i < this.array.length; i++) {
-            if (this.array[i] > max)
-                max = this.array[i];
-        }
-        return max;
-    }
-
-    private int countBits(int num){
-        return (int)(Math.log(num) / Math.log(2) +1);
-    }
-
-    private void checkSort() {
-        for (int i = 0; i < this.array.length - 1; i++) {
-            if (i != 0) {
-                if (this.array[i] > this.array[i + 1]) {
-                    System.out.println("Radix Sort gone Wrong!!!");
-                    System.exit(-1);
-                }
-            }
-        }
     }
 
 }
