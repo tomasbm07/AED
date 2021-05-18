@@ -5,7 +5,7 @@ import java.util.*;
 class generateInput {
     int[] array;
     Random rand;
-    int max_int = 10000;
+    int max_int = 10000000;
 
     public generateInput() {
         this.rand = new Random();

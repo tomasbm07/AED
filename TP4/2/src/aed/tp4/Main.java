@@ -16,21 +16,13 @@ public class Main {
         quickSort QS = new quickSort();
         generateInput generator = new generateInput();
 
-        //QS.setArray(new int[]{5,9,4,6,5,3});
-        //QS.sort();
-
-        /*
-        insertionSort IS = new insertionSort();
-        IS.setArray(generator.decrescente(10));
-        IS.sort();
-        */
         int num_reps = 5; // numero de vezes de execução para cada i -> calcular media
         for (int i = (int) (SIZE * 0.05); i <= SIZE; i += (int) (SIZE * 0.05)) {
             tempos_aux = new ArrayList<>();
             for (int x = 0; x < num_reps; x++) {
                 //QS.setArray(generator.random(i));
-                //QS.setArray(generator.decrescente(i));
-                QS.setArray(generator.ordenado1Random(i));
+                QS.setArray(generator.decrescente(i));
+                //QS.setArray(generator.ordenado1Random(i));
                 //QS.setArray(generator.ordenado5Random(i));
 
                 tempos_aux.add(QS.sort());
@@ -61,7 +53,7 @@ public class Main {
                 f.write("%d,%f\n".formatted(N.get(i), tempos.get(i)));
             }
             f.close();
-            //Desktop.getDesktop().open(new File("results.csv"));
+            Desktop.getDesktop().open(new File("results.csv"));
         } catch (Exception e) {
             e.printStackTrace();
         }

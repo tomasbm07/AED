@@ -24,7 +24,7 @@ class quickSort {
     }
 
     private void recursiveQuickSort(int[] array, int startIndex, int endIndex) {
-        if (startIndex + 200 > endIndex && doInsertionSort) {
+        if (startIndex + 100 > endIndex && doInsertionSort) {
             IS.sort(array, startIndex, endIndex);
             //System.out.println("Doing Insertion Sort!");
         } else {

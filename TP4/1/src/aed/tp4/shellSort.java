@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Random;
 
 class ShellSort {
-    ArrayList<Integer> array;
+    int[] array;
 
     public ShellSort() {}
 
 
-    public void setArray(ArrayList<Integer> array) {
+    public void setArray(int[] array) {
         this.array = array;
     }
 
@@ -20,12 +20,12 @@ class ShellSort {
         int i, j;
 
         for (int gap : gaps) {
-            for (i = gap; i < this.array.size(); i++) {
-                temp = this.array.get(i);
-                for (j = i; j >= gap && this.array.get(j - gap) > temp; j -= gap) {
-                    this.array.set(j, this.array.get(j - gap));
+            for (i = gap; i < this.array.length; i++) {
+                temp = this.array[i];
+                for (j = i; j >= gap && this.array[j - gap] > temp; j -= gap) {
+                    this.array[j] = this.array[j - gap];
                 }
-                this.array.set(j, temp);
+                this.array[j] = temp;
             }
         }
     }
@@ -35,10 +35,10 @@ class ShellSort {
 
         //create gaps
         List<Integer> gaps = new ArrayList<>();
-        for (int i = (int) (Math.log(this.array.size()) / Math.log(2)); i >= 0; i--) {
+        for (int i = (int) (Math.log(this.array.length) / Math.log(2)); i >= 0; i--) {
             gaps.add((int) Math.pow(2, i));
         }
-        System.out.println(gaps);
+        //System.out.println(gaps);
         long start_time = System.nanoTime();
 
         //shell sort algorithm
@@ -49,6 +49,7 @@ class ShellSort {
         return final_time / 1000000; //ms
     }
 
+    /*
     public float improved_sort_1() {
         long final_time;
 
@@ -88,6 +89,7 @@ class ShellSort {
         final_time = System.nanoTime() - start_time;
         return (float) (final_time / 1000000); //ms
     }
+     */
 
     //lista de gaps: https://oeis.org/A108870 - Tokuda's gaps
     public float improved_sort_3() {
@@ -110,9 +112,9 @@ class ShellSort {
         shellSort(gaps);
 
         final_time = System.nanoTime() - start_time;
-        return (float) (final_time / 1000000); //ms
+        return (float) (final_time / (double)1000000); //ms
     }
-
+    /*
     //lista de gaps: https://oeis.org/A000225
     public float improved_sort_4() {
         long final_time;
@@ -136,6 +138,19 @@ class ShellSort {
 
         final_time = System.nanoTime() - start_time;
         return (float) (final_time / 1000000); //ms
+    }
+
+     */
+
+    private void checkSort() {
+        for (int i = 0; i < this.array.length - 1; i++) {
+            if (i != 0) {
+                if (this.array[i] > this.array[i + 1]) {
+                    System.out.println("Quik Sort gone Wrong!!!");
+                    System.exit(-1);
+                }
+            }
+        }
     }
 
 }

@@ -26,8 +26,8 @@ public class Main {
         for (int i = (int) (SIZE * 0.05); i <= SIZE; i += (int) (SIZE * 0.05)) {
             tempos_aux = new ArrayList<>();
             for (int x = 0; x < num_reps; x++) {
-                //RS.setArray(generator.random(i));
-                RS.setArray(generator.decrescente(i));
+                RS.setArray(generator.random(i));
+                //RS.setArray(generator.decrescente(i));
                 //RS.setArray(generator.ordenado1Random(i));
                 //RS.setArray(generator.ordenado5Random(i));
 
